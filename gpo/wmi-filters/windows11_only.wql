@@ -1,0 +1,6 @@
+-- WMI Filter: Target Windows 11 Workstations Only
+-- Namespace: root\CIMv2
+-- ProductType = "1" indicates Client Workstation (skips Domain Controllers & Member Servers)
+-- Version LIKE "10.0.22%" matches Windows 11 Build 22000 and higher
+
+SELECT * FROM Win32_OperatingSystem WHERE Version LIKE "10.0.22%" AND ProductType = "1"

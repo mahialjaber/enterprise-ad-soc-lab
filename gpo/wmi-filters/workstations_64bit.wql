@@ -1,0 +1,6 @@
+-- WMI Filter: Target Windows 10 & 11 64-bit Workstations (Skip Servers)
+-- Namespace: root\CIMv2
+-- ProductType = "1" indicates Client OS
+-- OSArchitecture = "64-bit" ensures 64-bit architecture
+
+SELECT * FROM Win32_OperatingSystem WHERE Version LIKE "10.0%" AND ProductType = "1" AND OSArchitecture = "64-bit"

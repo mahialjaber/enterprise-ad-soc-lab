@@ -1,0 +1,27 @@
+# Operating System Artifacts
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Editor & IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Virtualization & Lab artifacts
+*.vmdk
+*.vmem
+*.nvram
+*.log
+*.vmx.lck
+*.vmxf
+
+# Sensitive files / Credentials
+*password*
+*secret*
+*credential*
+*.key
+!scripts/*.ps1
