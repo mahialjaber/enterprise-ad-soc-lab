@@ -1,11 +1,18 @@
-# Enterprise Active Directory Infrastructure & SOC Threat Detection Lab
+<div align="center">
 
-[![OS - Windows Server 2022](https://img.shields.io/badge/OS-Windows_Server_2022-0078D6?logo=windows-server&logoColor=white)](#)
-[![Directory - Active Directory DS](https://img.shields.io/badge/Active_Directory-AD_DS_Forest-00A4EF?logo=microsoft&logoColor=white)](#)
-[![Hypervisor - VMware Workstation](https://img.shields.io/badge/Hypervisor-VMware_Workstation_17-607D8B?logo=vmware&logoColor=white)](#)
-[![Automation - PowerShell](https://img.shields.io/badge/Automation-PowerShell-5391FE?logo=powershell&logoColor=white)](#)
-[![Domain - mahialjaber.me](https://img.shields.io/badge/Domain-mahialjaber.me-2ECC71)](#)
-[![SOC Engineering - Threat Detection](https://img.shields.io/badge/SOC_Engineering-Threat_Detection_Ready-E74C3C?logo=target&logoColor=white)](#)
+<img src="assets/banner.jpg" alt="Enterprise Active Directory Infrastructure & SOC Threat Detection Lab Hero Banner" width="100%" />
+
+# 🛡️ Enterprise Active Directory Infrastructure & SOC Threat Detection Lab
+### *Production Windows Server 2022 Forest, High Availability, DNS/DHCP, GPO Hardening & Telemetry*
+
+[![OS - Windows Server 2022](https://img.shields.io/badge/OS-Windows_Server_2022-0078D6?style=for-the-badge&logo=windows-server&logoColor=white)](#)
+[![Directory - Active Directory DS](https://img.shields.io/badge/Active_Directory-AD_DS_Forest-00A4EF?style=for-the-badge&logo=microsoft&logoColor=white)](#)
+[![Hypervisor - VMware Workstation](https://img.shields.io/badge/Hypervisor-VMware_Workstation_17-607D8B?style=for-the-badge&logo=vmware&logoColor=white)](#)
+[![Automation - PowerShell](https://img.shields.io/badge/Automation-PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)](#)
+[![Domain - mahialjaber.me](https://img.shields.io/badge/Domain-mahialjaber.me-2ECC71?style=for-the-badge)](#)
+[![Author](https://img.shields.io/badge/Author-Mahi%20Al%20Jaber-orange?style=for-the-badge&logo=github)](https://github.com/mahialjaber)
+
+</div>
 
 ---
 
