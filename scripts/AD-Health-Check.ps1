@@ -2,8 +2,11 @@
 .SYNOPSIS
     Active Directory Comprehensive Health and Replication Diagnostic Script.
 .DESCRIPTION
-    Runs multi-point checks: AD replication partners, DCDIAG tests, DNS resolution,
-    and SYSVOL share availability.
+    Executes automated health checks: AD inbound/outbound replication summary,
+    forest-wide synchronization, DCDIAG test suites, SYSVOL/NETLOGON share status,
+    and active domain controller discovery.
+.EXAMPLE
+    .\AD-Health-Check.ps1
 #>
 
 Write-Host "==========================================================" -ForegroundColor Green

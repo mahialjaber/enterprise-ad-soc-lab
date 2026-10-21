@@ -7,7 +7,7 @@ This document captures real-world production engineering challenges, failures en
 ## Issue 1: Missing DNS Management MMC Snap-in (`dnsmgmt.msc`)
 
 ### Symptoms
-Attempting to open DNS Manager via `Win + R` $\rightarrow$ `dnsmgmt.msc` or Server Manager Tools produces an error indicating the management snap-in is not installed or the executable cannot be located.
+Attempting to open DNS Manager via `Win + R` → `dnsmgmt.msc` or Server Manager Tools produces an error indicating the management snap-in is not installed or the executable cannot be located.
 
 ### Root Cause
 During the role installation wizard or automated feature deployment, the remote administration management tools sub-feature (`RSAT-DNS-Server`) was omitted.
