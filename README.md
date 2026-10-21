@@ -130,19 +130,15 @@ Detailed architectural guides and playbooks are maintained in dedicated modules:
 
 ---
 
-## Future Roadmap (Phase 2)
-
-* [ ] **Wazuh SIEM Ingestion:** Deploy Wazuh Agent on `DC01` to forward security logs to the Rocky Linux Wazuh Manager.
-* [ ] **Splunk Universal Forwarder:** Stream AD authentication and object change telemetry to the Ubuntu Splunk instance.
-* [ ] **Adversary Emulation:** Execute Kerberoasting and AS-REP Roasting simulations from Kali Linux to build custom Sigma and SPL detection alerts.
+## Next Step
+* Next Phase: Ingesting Active Directory event logs into Splunk & Wazuh SIEM for detection engineering.
 
 ---
 
-## Author & Acknowledgments
+## Author
 
 * **Mahi Al Jaber** — *SOC Analyst & Detection Engineer* ([@mahialjaber](https://github.com/mahialjaber))
 * **Domain:** `mahialjaber.me`
-* Special credit to Manjeet Rawat (*Teach Me Cloud*) for the Active Directory curriculum.
 
 ---
 *Distributed under the MIT License. See [LICENSE](LICENSE) for details.*
