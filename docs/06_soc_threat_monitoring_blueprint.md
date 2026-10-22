@@ -1,5 +1,8 @@
 # SOC Threat Monitoring & Active Directory Detection Blueprint
 
+> **Architectural Blueprint & Detection Engineering Design:**  
+> This document serves as the architectural detection design blueprint for monitoring this Active Directory domain across centralized SIEM pipelines (Splunk Enterprise and Wazuh). It defines the required audit policies, telemetry ingestion pipelines, and experimental Sigma rules ready for deployment and purple-team attack emulation.
+
 Active Directory is the primary target for advanced persistent threats (APTs) and ransomware operators during internal network compromise. This document maps core AD operations to attacker tradecraft, MITRE ATT&CK techniques, and specific Windows Event IDs.
 
 ---
@@ -20,14 +23,14 @@ Active Directory is the primary target for advanced persistent threats (APTs) an
 
 ## 2. Telemetry Architecture for Wazuh & Splunk
 
-To bridge this Active Directory domain with our upcoming SIEM deployment:
+To bridge this Active Directory domain with our centralized SIEM monitoring infrastructure:
 
 ```
 [ Domain Controller (DC01) ]
   ├── Windows Security Event Log (Auditpol Baseline)
   ├── Microsoft-Windows-Sysmon/Operational (Event IDs 1, 3, 7, 8, 10, 11, 22)
   │
-  ├── Wazuh Agent (Active Directory Integration) ────► [ Wazuh Manager (Rocky Linux) ]
+  ├── Wazuh Agent (Active Directory Integration) ────► [ Wazuh Manager (Ubuntu) ]
   │                                                           └── Custom Alert Rules
   │
   └── Splunk Universal Forwarder (outputs.conf)  ────► [ Splunk Enterprise (Ubuntu) ]
@@ -41,7 +44,7 @@ To bridge this Active Directory domain with our upcoming SIEM deployment:
 ### Rule 1: Suspicious Kerberos TGS Request (Kerberoasting)
 ```yaml
 title: Potential Kerberoasting Ticket Request
-status: production
+status: experimental
 logsource:
   product: windows
   service: security
@@ -59,7 +62,7 @@ level: high
 ### Rule 2: Non-DC Requesting Directory Replication (DCSync)
 ```yaml
 title: Potential DCSync Replication Request by Non-DC Account
-status: production
+status: experimental
 logsource:
   product: windows
   service: security
@@ -73,4 +76,60 @@ detection:
     SubjectUserName|endswith: '$'
   condition: selection and not filter
 level: critical
+```
+
+### Rule 3: Account Added to Privileged Domain Security Group
+```yaml
+title: Account Added to Privileged Domain Security Group
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID:
+      - 4728  # Member added to global security group
+      - 4732  # Member added to local security group
+      - 4756  # Member added to universal security group
+    TargetUserName:
+      - 'Domain Admins'
+      - 'Enterprise Admins'
+      - 'Schema Admins'
+      - 'Administrators'
+  condition: selection
+level: high
+```
+
+### Rule 4: Suspicious Kerberos Pre-Authentication Failure (AS-REP Roasting Indicator)
+```yaml
+title: Suspicious Kerberos Pre-Authentication Without Preauth
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4768
+    PreAuthType: '0'
+    TicketEncryptionType: '0x17'
+  filter:
+    TargetUserName|endswith: '$'
+  condition: selection and not filter
+level: medium
+```
+
+### Rule 5: Domain Account Created
+```yaml
+title: New Domain User Account Created
+status: experimental
+logsource:
+  product: windows
+  service: security
+detection:
+  selection:
+    EventID: 4720
+  condition: selection
+level: medium
+falsepositives:
+  - Authorized IT service desk account provisioning during scheduled hours
 ```
